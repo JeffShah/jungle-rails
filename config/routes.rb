@@ -17,7 +17,8 @@ Rails.application.routes.draw do
     resources :products, except: [:edit, :update, :show]
     resources :categories, except: [:edit, :update, :destroy]
   end
-  GifVault::Application.routes.draw do
+
+  #GifVault::Application.routes.draw do
 
     get '/login' => 'sessions#new'
     post '/login' => 'sessions#create'
@@ -26,9 +27,9 @@ Rails.application.routes.draw do
     get '/signup' => 'users#new'
     post '/users' => 'users#create'
 
-  end
+  #end
     # This route sends requests to our naked url to the *cool* action in the *gif* controller.
-    root to: 'gif#cool'
+    #root to: 'gif#cool'
     
     # I've created a gif controller so I have a page I can secure later. 
     # This is optional (as is the root to: above).
@@ -95,4 +96,3 @@ end
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
