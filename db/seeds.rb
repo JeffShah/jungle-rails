@@ -132,5 +132,43 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+puts "Re-creating Users ..."
+
+  user1 = User.find_or_create_by!({
+  name: "test",
+  email: "test@test.com",
+  password_digest: "test"
+})
+
+puts "Re-creating Reviews ..."
+
+
+  prod1 = Product.find_by! id: 1
+  prod2 = Product.find_by! id: 2
+  prod3 = Product.find_by! id: 3
+
+Review.destroy_all	Review.destroy_all
+
+
+  prod1.reviews.create!({
+  product_id: 1,
+  user_id: 1,
+  description: "A+ would recommend.",
+  rating: 5,
+  })
+
+  prod2.reviews.create!({
+  product_id: 2,
+  user_id: 1,
+  description: "I didn't like it.",
+  rating: 1,
+  })
+
+  prod3.reviews.create!({
+  product_id: 3,
+  user_id: 1,
+  description: "It was okay I guess.",
+  rating: 3,
+  })
 
 puts "DONE!"
